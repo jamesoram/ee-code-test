@@ -87,7 +87,8 @@ I then proceeded to fill in all the textboxes in the form, and put the same date
 Surprisingly, the application doesn't have a problem with this (also an issue) and I wondered how I would get my 
 confirmation. Perhaps my email address should also be on the form? I clicked delete and it deleted my booking correctly.
 
-After that, I made a booking with dates in the past that was also accepted.
+After that, I made a booking with dates in the past that was also accepted. It also accepts having a checkout date
+before the check-in date.
 
 My next move is to try a SQL injection, but it looks like the application is correctly sanitising input.
 My first name is:
@@ -102,5 +103,7 @@ There is no SSL certificate, which means I would probably never pay anything on 
 There is also no privacy policy and no cookie message, which could lead to legal problems.
 
 Finally, as my exploratory testing timebox is finishing, I try to input letters into the price box. The server responds
-with an HTTP 500 error. This is an issue as both the front-end and the back-end should validate the data.
+with an HTTP 500 error. This is an issue as both the front-end and the back-end should validate the data. The price 
+textbox allows me to enter a floating point number as long as I use a dot. Using a comma returns a 500. I would love to
+test this in other browsers given more time.
 
