@@ -1,6 +1,6 @@
-##**Summary of exploratory testing session:**
+**Summary of exploratory testing session:**
 
-###*Main findings*
+*Main findings*
 
 * Both front-end and back-end are not validating input
 * There is information missing in the form: email, currency, type of room etc.
