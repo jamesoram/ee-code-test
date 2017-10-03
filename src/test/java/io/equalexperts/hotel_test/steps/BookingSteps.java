@@ -52,10 +52,6 @@ public class BookingSteps {
 
     @When("^I enter data into the booking form and save it$")
     public void enterDataIntoTheBookingForm(DataTable table) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-        // E,K,V must be a scalar (String, Integer, Date, enum etc)
         Map<String, String> data = table.asMap(String.class, String.class);
         String firstName = data.get("firstName");
         String lastName = data.get("lastName");
