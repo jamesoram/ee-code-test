@@ -117,5 +117,5 @@ In order to run the tests you will need Chrome, the JDK, and Chromedriver in you
 mvn clean test
 ```
 
-I chose to use Serenity because it has good support for Cucumber. Cucumber isn't my favourite tool is real BDD isn't
+I chose to use Serenity because it has good support for Cucumber. Cucumber isn't my favourite tool if real BDD isn't
 being applied, but it seems quite common in the industry. Thus, I thought it would be appropriate for this code test.
