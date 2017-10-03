@@ -9,7 +9,8 @@
 *The following is a summary of the session in braindump format*
 
 The first thing I did was check for cookies and local storage. I couldn't find any on landing.
-Next, I clicked the "Save" button without entering any data and got an HTTP 500 response from the back-end. This is a defect as the back-end should validate data. This can be reproduce simply with an HTTP client, for example curl:
+Next, I clicked the "Save" button without entering any data and got an HTTP 500 response from the back-end. This is a defect as 
+the front-end and back-end should validate data. This can be reproduced simply with an HTTP client, for example curl:
 
 ```
  % curl -vv -X POST 'http://hotel-test.equalexperts.io/booking'
