@@ -2,6 +2,9 @@
 
 *Main findings*
 
+* There are no clear instructions on what the website is for, and the branding does not make it clear
+to whom it belongs.
+* Unencrypted HTTP (which is a no-no for e-commerce)
 * Both front-end and back-end are not validating input
 * There is information missing in the form: email, currency, type of room etc.
 * There is a JS error in the console
@@ -93,6 +96,8 @@ My first name is:
 ```
 Just to make sure, I try to inject Javascript. It looks like if I use the script HTML tag the application breaks, 
 as it does not display anything.
+
+There is no SSL certificate, which means I would probably never pay anything on this site :)
 
 Finally, as my exploratory testing timebox is finishing, I try to input letters into the price box. The server responds
 with an HTTP 500 error. This is an issue as both the front-end and the back-end should validate the data.
