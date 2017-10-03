@@ -1,3 +1,6 @@
+***Part 1***
+
+
 **Summary of exploratory testing session:**
 
 *Main findings*
@@ -97,7 +100,7 @@ My first name is:
 ' OR 1=1; DROP TABLE USERS;
 ```
 Just to make sure, I try to inject Javascript. It looks like if I use the script HTML tag the application breaks, 
-as it does not display anything.
+as it does not display anything (the delete button doesn't appear so this will require clean-up in the db -- sorry!).
 
 There is no SSL certificate, which means I would probably never pay anything on this site :) 
 There is also no privacy policy and no cookie message, which could lead to legal problems.
@@ -107,3 +110,12 @@ with an HTTP 500 error. This is an issue as both the front-end and the back-end 
 textbox allows me to enter a floating point number as long as I use a dot. Using a comma returns a 500. I would love to
 test this in other browsers given more time.
 
+***Part 2***
+
+In order to run the tests you will need Chrome, the JDK, and Chromedriver in your PATH. To run them type:
+``` 
+mvn clean test
+```
+
+I chose to use Serenity because it has good support for Cucumber. Cucumber isn't my favourite tool is real BDD isn't
+being applied, but it seems quite common in the industry. Thus, I thought it would be appropriate for this code test.
