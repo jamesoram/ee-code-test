@@ -119,3 +119,5 @@ mvn clean test
 
 I chose to use Serenity because it has good support for Cucumber. Cucumber isn't my favourite tool if real BDD isn't
 being applied, but it seems quite common in the industry. Thus, I thought it would be appropriate for this code test.
+Some things could be done better (for example, perhaps it's not great to instantiate the same page in multiple steps)
+but my focus has been on completing the exercise this evening after work to a standard that I hope it acceptable.
