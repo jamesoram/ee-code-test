@@ -99,7 +99,7 @@ My first name is:
 ``` SQL
 ' OR 1=1; DROP TABLE USERS;
 ```
-Just to make sure, I try to inject Javascript. It looks like if I use the script HTML tag the application breaks, 
+Just to make sure, I try to inject Javascript. It looks like if I use the script HTML tag the application breaks (<script type="javascript"> for example), 
 as it does not display anything (the delete button doesn't appear so this will require clean-up in the db -- sorry!).
 
 There is no SSL certificate, which means I would probably never pay anything on this site :) 
@@ -112,7 +112,7 @@ test this in other browsers given more time.
 
 ***Part 2***
 
-In order to run the tests you will need Chrome, the JDK, and Chromedriver in your PATH. To run them type:
+In order to run the tests you will need Chrome, the JDK, Maven, and Chromedriver in your PATH. To run them type:
 ``` 
 mvn clean test
 ```
