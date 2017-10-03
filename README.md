@@ -1,5 +1,13 @@
 ##**Summary of exploratory testing session:**
 
+###*Main findings*
+
+* Both front-end and back-end are not validating input
+* There is information missing in the form: email, currency, type of room etc.
+* There is a JS error in the console
+
+*The following is a summary of the session in braindump format*
+
 The first thing I did was check for cookies and local storage. I couldn't find any on landing.
 Next, I clicked the "Save" button without entering any data and got an HTTP 500 response from the back-end. This is a defect as the back-end should validate data. This can be reproduce simply with an HTTP client, for example curl:
 
