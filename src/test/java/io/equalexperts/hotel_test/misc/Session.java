@@ -6,5 +6,6 @@ public enum Session {
     PRICE,
     DEPOSIT,
     CHECKIN,
-    CHECKOUT
+    CHECKOUT,
+    BOOKING_COUNT
 }

@@ -23,6 +23,6 @@ public class Wait extends WebDriverWait {
     }
 
     public void forElementRemoved(final String cssLocator, final int originalCount) {
-        forElementAdded(cssLocator, -originalCount);
+        forElementAdded(cssLocator, originalCount - 2);
     }
 }

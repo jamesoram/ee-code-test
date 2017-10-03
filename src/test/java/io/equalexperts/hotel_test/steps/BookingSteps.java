@@ -12,6 +12,8 @@ import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -40,6 +42,12 @@ public class BookingSteps {
     @Given("^I am on the booking page$")
     public void onTheBookingPage() {
         driver.get(URL);
+    }
+
+    @Given("^I have a booking$")
+    public void haveBooking() {
+        onTheBookingPage();
+        enterDataIntoTheBookingForm();
     }
 
     @When("^I enter data into the booking form and save it$")
@@ -73,6 +81,47 @@ public class BookingSteps {
                 .clickSave();
     }
 
+    private void enterDataIntoTheBookingForm() {
+        // yep, this is ugly and should be done in a loop or using streams.
+        List<List<String>> data = new ArrayList<List<String>>();
+        List<String> firstName = new ArrayList<String>();
+        firstName.add("firstName");
+        firstName.add("TestName");
+        data.add(firstName);
+
+        List<String> lastName = new ArrayList<String>();
+        lastName.add("lastName");
+        lastName.add("testLastName");
+        data.add(lastName);
+
+        List<String> price = new ArrayList<String>();
+        price.add("price");
+        price.add("3111");
+        data.add(price);
+
+        List<String> deposit = new ArrayList<String>();
+        deposit.add("deposit");
+        deposit.add("true");
+        data.add(deposit);
+
+        List<String> checkin = new ArrayList<String>();
+        checkin.add("checkin");
+        checkin.add("2018-01-01");
+        data.add(checkin);
+
+        List<String> checkout = new ArrayList<String>();
+        checkout.add("checkout");
+        checkout.add("2018-02-01");
+        data.add(checkout);
+
+        enterDataIntoTheBookingForm(DataTable.create(data));
+    }
+
+    @When("^I click the delete button for that booking$")
+    public void clickDeleteButton() {
+        new BookingPage(driver).clickDelete();
+    }
+
     @Then("^the booking is complete$")
     public void theBookingIsComplete() {
         BookingPage page = new BookingPage(driver);
@@ -82,5 +131,12 @@ public class BookingSteps {
         assertThat(page.getLastDeposit(), equalTo(Serenity.sessionVariableCalled(Session.DEPOSIT)));
         assertThat(page.getLastCheckin(), equalTo(Serenity.sessionVariableCalled(Session.CHECKIN)));
         assertThat(page.getLastCheckout(), equalTo(Serenity.sessionVariableCalled(Session.CHECKOUT)));
+    }
+
+    @Then("^the booking is deleted$")
+    public void bookingIsDeleted() {
+        BookingPage page = new BookingPage(driver);
+        assertThat(page.getCurrentBookingCount(),
+                equalTo(((Integer)Serenity.sessionVariableCalled(Session.BOOKING_COUNT) - 1)));
     }
 }

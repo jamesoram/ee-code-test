@@ -1,6 +1,8 @@
 package io.equalexperts.hotel_test.pages;
 
+import io.equalexperts.hotel_test.misc.Session;
 import io.equalexperts.hotel_test.misc.Wait;
+import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,11 +34,9 @@ public class BookingPage extends AbstractPage {
     @FindBy(css = "input[value=\" Save \"]")
     private WebElement saveButton;
 
-    // Same as above. However, as there can be multiple delete buttons on the page this WebElement will be used
-    // in the case when we know there is only one. In order to keep things simple, this code test will always
-    // assume one delete button, but in the real world this wouldn't be the case.
-    @FindBy(css = "input[value=\"Delete\"]")
-    private WebElement deleteButton;
+    // This will always find the delete button for the last row
+    @FindBy(css = "#bookings>.row:last-child>.col-md-1:nth-child(7)>input")
+    private WebElement lastDeleteButton;
 
     // these complicated selectors are not great - I would add something to simplify them to the app
     @FindBy(css = "#bookings>.row:last-child>.col-md-2:nth-child(1)")
@@ -99,6 +99,14 @@ public class BookingPage extends AbstractPage {
         int currentBookingCount = getCurrentBookingCount();
         saveButton.click();
         new Wait(driver, 30).forElementAdded(CURRENT_BOOKINGS, currentBookingCount);
+        return new BookingPage(driver);
+    }
+
+    public BookingPage clickDelete() {
+        Integer currentBookingCount = getCurrentBookingCount();
+        Serenity.setSessionVariable(Session.BOOKING_COUNT).to(currentBookingCount);
+        lastDeleteButton.click();
+        new Wait(driver, 30).forElementRemoved(CURRENT_BOOKINGS, currentBookingCount);
         return new BookingPage(driver);
     }
 
